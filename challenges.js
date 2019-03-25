@@ -7,17 +7,17 @@ Change the game to follow these rules:
 3. Add another dice to the game, so that there are two dices now. The player looses his current score when one of them is a 1. (Hint: you will need CSS to position the second dice, so take a look at the CSS code for the first one.)
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
+let scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
-var lastDice;
+let lastDice;
 
 document.querySelector('.btn-roll').addEventListener('click', function() {
     if(gamePlaying) {
         // 1. Random number
-        var dice1 = Math.floor(Math.random() * 6) + 1;
-        var dice2 = Math.floor(Math.random() * 6) + 1;
+        let dice1 = Math.floor(Math.random() * 6) + 1;
+        let dice2 = Math.floor(Math.random() * 6) + 1;
 
         //2. Display the result
         document.getElementById('dice-1').style.display = 'block';
@@ -34,7 +34,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             //Next player
             nextPlayer();
         }
-        
+
         /*
         if (dice === 6 && lastDice === 6) {
             //Player looses score
@@ -51,7 +51,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         }
         lastDice = dice;
         */
-    }    
+    }
 });
 
 
@@ -62,10 +62,10 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 
         // Update the UI
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-        
-        var input = document.querySelector('.final-score').value;
-        var winningScore;
-        
+
+        const input = document.querySelector('.final-score').value;
+        let winningScore;
+
         // Undefined, 0, null or "" are COERCED to false
         // Anything else is COERCED to true
         if(input) {
@@ -73,7 +73,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         } else {
             winningScore = 100;
         }
-        
+
         // Check if player won the game
         if (scores[activePlayer] >= winningScore) {
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
